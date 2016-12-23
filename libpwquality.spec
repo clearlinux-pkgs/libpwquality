@@ -4,7 +4,7 @@
 #
 Name     : libpwquality
 Version  : 1.3.0
-Release  : 10
+Release  : 11
 URL      : https://fedorahosted.org/releases/l/i/libpwquality/libpwquality-1.3.0.tar.bz2
 Source0  : https://fedorahosted.org/releases/l/i/libpwquality/libpwquality-1.3.0.tar.bz2
 Summary  : A library for password generation and password quality checking
