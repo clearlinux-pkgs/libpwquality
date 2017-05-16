@@ -4,9 +4,9 @@
 #
 Name     : libpwquality
 Version  : 1.3.0
-Release  : 12
-URL      : https://fedorahosted.org/releases/l/i/libpwquality/libpwquality-1.3.0.tar.bz2
-Source0  : https://fedorahosted.org/releases/l/i/libpwquality/libpwquality-1.3.0.tar.bz2
+Release  : 13
+URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.3.0/libpwquality-1.3.0.tar.bz2
+Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.3.0/libpwquality-1.3.0.tar.bz2
 Summary  : A library for password generation and password quality checking
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
@@ -20,6 +20,7 @@ BuildRequires : cracklib-dev
 BuildRequires : pbr
 BuildRequires : pip
 BuildRequires : python-dev
+BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
@@ -41,6 +42,7 @@ Summary: dev components for the libpwquality package.
 Group: Development
 Requires: libpwquality-lib
 Requires: libpwquality-bin
+Provides: libpwquality-devel
 
 %description dev
 dev components for the libpwquality package.
@@ -82,16 +84,23 @@ python components for the libpwquality package.
 %setup -q -n libpwquality-1.3.0
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
+export LANG=C
+export SOURCE_DATE_EPOCH=1494964359
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
+export SOURCE_DATE_EPOCH=1494964359
 rm -rf %{buildroot}
 %make_install
 %find_lang libpwquality
@@ -107,8 +116,8 @@ rm -rf %{buildroot}
 %files dev
 %defattr(-,root,root,-)
 /usr/include/*.h
-/usr/lib64/*.so
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/libpwquality.so
+/usr/lib64/pkgconfig/pwquality.pc
 
 %files doc
 %defattr(-,root,root,-)
@@ -119,13 +128,14 @@ rm -rf %{buildroot}
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/*.so.*
+/usr/lib64/libpwquality.so.1
+/usr/lib64/libpwquality.so.1.0.2
 /usr/lib64/security/pam_pwquality.so
 
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python*/*
+/usr/lib/python2*/*
 
-%files locales -f libpwquality.lang 
+%files locales -f libpwquality.lang
 %defattr(-,root,root,-)
 
