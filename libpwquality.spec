@@ -4,14 +4,14 @@
 #
 Name     : libpwquality
 Version  : 1.4.0
-Release  : 14
+Release  : 15
 URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Summary  : A library for password generation and password quality checking
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
 Requires: libpwquality-bin
-Requires: libpwquality-python
+Requires: libpwquality-legacypython
 Requires: libpwquality-lib
 Requires: libpwquality-locales
 Requires: libpwquality-doc
@@ -56,6 +56,14 @@ Group: Documentation
 doc components for the libpwquality package.
 
 
+%package legacypython
+Summary: legacypython components for the libpwquality package.
+Group: Default
+
+%description legacypython
+legacypython components for the libpwquality package.
+
+
 %package lib
 Summary: lib components for the libpwquality package.
 Group: Libraries
@@ -72,14 +80,6 @@ Group: Default
 locales components for the libpwquality package.
 
 
-%package python
-Summary: python components for the libpwquality package.
-Group: Default
-
-%description python
-python components for the libpwquality package.
-
-
 %prep
 %setup -q -n libpwquality-1.4.0
 
@@ -88,7 +88,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1496067563
+export SOURCE_DATE_EPOCH=1505005020
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
@@ -100,7 +100,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1496067563
+export SOURCE_DATE_EPOCH=1505005020
 rm -rf %{buildroot}
 %make_install
 %find_lang libpwquality
@@ -126,15 +126,15 @@ rm -rf %{buildroot}
 %doc /usr/share/man/man5/*
 %doc /usr/share/man/man8/*
 
+%files legacypython
+%defattr(-,root,root,-)
+/usr/lib/python2*/*
+
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpwquality.so.1
 /usr/lib64/libpwquality.so.1.0.2
 /usr/lib64/security/pam_pwquality.so
-
-%files python
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
 
 %files locales -f libpwquality.lang
 %defattr(-,root,root,-)
