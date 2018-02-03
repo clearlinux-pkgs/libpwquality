@@ -4,7 +4,7 @@
 #
 Name     : libpwquality
 Version  : 1.4.0
-Release  : 17
+Release  : 18
 URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Summary  : A library for password generation and password quality checking
@@ -99,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1517630336
+export SOURCE_DATE_EPOCH=1517685267
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -111,7 +111,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1517630336
+export SOURCE_DATE_EPOCH=1517685267
 rm -rf %{buildroot}
 %make_install
 %find_lang libpwquality
