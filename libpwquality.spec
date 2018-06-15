@@ -20,7 +20,7 @@ BuildRequires : Linux-PAM-dev
 BuildRequires : cracklib-dev
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
+
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
