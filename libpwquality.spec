@@ -4,7 +4,7 @@
 #
 Name     : libpwquality
 Version  : 1.4.0
-Release  : 25
+Release  : 26
 URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.0/libpwquality-1.4.0.tar.bz2
 Summary  : A library for password generation and password quality checking
