@@ -4,7 +4,7 @@
 #
 Name     : libpwquality
 Version  : 1.4.2
-Release  : 33
+Release  : 34
 URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.2/libpwquality-1.4.2.tar.bz2
 Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.2/libpwquality-1.4.2.tar.bz2
 Summary  : Library for password quality checking and generating random passwords
@@ -103,13 +103,14 @@ python3 components for the libpwquality package.
 
 %prep
 %setup -q -n libpwquality-1.4.2
+cd %{_builddir}/libpwquality-1.4.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572542843
+export SOURCE_DATE_EPOCH=1583167785
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
@@ -127,7 +128,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1572542843
+export SOURCE_DATE_EPOCH=1583167785
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libpwquality
 cp %{_builddir}/libpwquality-1.4.2/COPYING %{buildroot}/usr/share/package-licenses/libpwquality/a01b717e0f402c7a4edeeec8e2afbc961ec72c18
