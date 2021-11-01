@@ -4,7 +4,7 @@
 #
 Name     : libpwquality
 Version  : 1.4.4
-Release  : 48
+Release  : 49
 URL      : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.4/libpwquality-1.4.4.tar.bz2
 Source0  : https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.4/libpwquality-1.4.4.tar.bz2
 Summary  : A library for password generation and password quality checking
@@ -108,7 +108,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602720547
+export SOURCE_DATE_EPOCH=1635748898
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -125,14 +125,14 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1602720547
+export SOURCE_DATE_EPOCH=1635748898
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libpwquality
 cp %{_builddir}/libpwquality-1.4.4/COPYING %{buildroot}/usr/share/package-licenses/libpwquality/a01b717e0f402c7a4edeeec8e2afbc961ec72c18
 %make_install
 %find_lang libpwquality
 ## Remove excluded files
-rm -f %{buildroot}/etc/security/pwquality.conf
+rm -f %{buildroot}*/etc/security/pwquality.conf
 
 %files
 %defattr(-,root,root,-)
